@@ -83,5 +83,3 @@ Local run:
 pip install -r requirements.txt
 streamlit run app.py
 ```
-
-Vercel is not the best target for this app because Streamlit runs as a persistent Python web server, while Vercel is mainly designed for frontend apps and serverless functions.
