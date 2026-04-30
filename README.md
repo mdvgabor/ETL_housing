@@ -62,3 +62,26 @@ The pipeline relies on **serverless AWS services**, keeping infrastructure and o
 
 
 This pipeline costs basically nothing, only 1-2 dollars a month. If I wanted to put this into serious commercial operation, the cost of the OpenMeteo-API would be 30 EUR for 1 million monthly API calls which would be more than enough.
+
+---
+
+## Run the Streamlit App in a Browser
+
+This project is already a Streamlit app, so it does not need to be rewritten for Vercel. For the easiest browser-based deployment, use **Streamlit Community Cloud**:
+
+1. Push this repository to GitHub.
+2. Go to https://share.streamlit.io/.
+3. Create a new app from the repository.
+4. Set the main file path to `app.py`.
+5. Deploy.
+
+Streamlit Community Cloud will install the dependencies from `requirements.txt` and give the app a public browser URL.
+
+Local run:
+
+```bash
+pip install -r requirements.txt
+streamlit run app.py
+```
+
+Vercel is not the best target for this app because Streamlit runs as a persistent Python web server, while Vercel is mainly designed for frontend apps and serverless functions.

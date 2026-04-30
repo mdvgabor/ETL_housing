@@ -17,9 +17,10 @@ st.set_page_config(page_title="California Housing – Predictor + EDA", layout="
 # Data + model helpers
 @st.cache_data
 def load_data() -> pd.DataFrame:
-    df = pd.read_csv("https://housing-raw.s3.amazonaws.com/california_housing.csv")
-    # for transformed data: I use the unmodified here because I am poor
-    # "https://housing-500.s3.amazonaws.com/final_housing_500.csv"
+    try:
+        df = pd.read_csv("https://housing-raw.s3.amazonaws.com/california_housing.csv")
+    except Exception:
+        df = pd.read_csv("california_housing.csv")
 
     df["ocean_proximity"] = df["ocean_proximity"].replace(
         {"NEAR BAY": "NEAR WATER", "NEAR OCEAN": "NEAR WATER", "ISLAND": "NEAR WATER"}
